@@ -14,18 +14,8 @@
         groundValue = document.defaultView.getComputedStyle(element, null).backgroundImage;
       }
 
-
-
       groundUrl = groundValue.match(/^url\(["']?(.*?)["']?\)/i)[1];
       groundBox.style.cssText = 'position: relative;' + 'width: 100%;' + 'height: 100%;' + 'overflow: hidden;';
-
-      var img = new Image();
-      img.src = "";
-
-      img.onload = function () {
-        setBackground(img.width, img.height);
-      }
-      img.src = groundUrl;
 
       var winW = document.documentElement.clientWidth;
       var winH = document.documentElement.clientHeight;
@@ -41,6 +31,14 @@
         groundBox.innerHTML = '<img src="' + groundUrl + '" alt="" width="' + setW + '" height="' + setH + '" />';
         element.appendChild(groundBox);
       };
+
+      var img = new Image();
+      img.src = "";
+
+      img.onload = function () {
+        setBackground(img.width, img.height);
+      }
+      img.src = groundUrl;
 
       var resizeWindow = function() {
         winW = document.documentElement.clientWidth;
