@@ -5,8 +5,16 @@
       var element = this;
       var backImg = document.createElement('img');
       var groundBox = document.createElement('div');
-      var groundValue = document.defaultView.getComputedStyle (element, null).backgroundImage;
-      //var value = element.currentStyle.backgroundImage;
+
+      var groundValue;
+
+      if (element.currentStyle) {
+        groundValue = element.currentStyle.backgroundImage;
+      } else if (window.getComputedStyle) {
+        groundValue = document.defaultView.getComputedStyle(element, null).backgroundImage;
+      }
+
+
 
       groundUrl = groundValue.match(/^url\(["']?(.*?)["']?\)/i)[1];
       groundBox.style.cssText = 'position: relative;' + 'width: 100%;' + 'height: 100%;' + 'overflow: hidden;';
