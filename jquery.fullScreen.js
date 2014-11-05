@@ -8,6 +8,8 @@
 
       var groundValue;
 
+      if (!element.id) return;
+
       if (element.currentStyle) {
         groundValue = element.currentStyle.backgroundImage;
       } else if (window.getComputedStyle) {
@@ -28,7 +30,7 @@
         var setH = imgH * fixScale;
         var moveX = Math.floor((winW - setW) / 2);
         var moveY = Math.floor((winH - setH) / 2);
-        groundBox.innerHTML = '<img src="' + groundUrl + '" alt="" width="' + setW + '" height="' + setH + '" />';
+        groundBox.innerHTML = '<img src="' + groundUrl + '" alt="" width="' + setW + '" height="' + setH + '" style="z-index: -1;" />';
         element.appendChild(groundBox);
       };
 
